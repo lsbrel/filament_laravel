@@ -23,7 +23,9 @@ class ClubResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make("name"),
+                Forms\Components\TextInput::make("foundation_year"),
+                Forms\Components\TextInput::make("country"),
             ]);
     }
 
@@ -31,7 +33,10 @@ class ClubResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make("id"),
+                Tables\Columns\TextColumn::make("name"),
+                Tables\Columns\TextColumn::make("foundation_year"),
+                Tables\Columns\TextColumn::make("country"),
             ])
             ->filters([
                 //

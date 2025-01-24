@@ -10,7 +10,13 @@ class Club extends Model
 
     protected $table = "club";
 
-    public function footballPlayer(): HasMany
+    protected $fillable = [
+        'name',
+        'foundation_year',
+        'country',
+    ];
+
+    public function footballPlayers(): HasMany
     {
         return $this->hasMany(FootballPlayer::class);
     }
