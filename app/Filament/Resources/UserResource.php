@@ -47,7 +47,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make("id"),
-                Tables\Columns\TextColumn::make("name"),
+                Tables\Columns\TextColumn::make("name")->label(__("messages.name")),
                 Tables\Columns\TextColumn::make("email"),
                 Tables\Columns\TextColumn::make("password"),
 

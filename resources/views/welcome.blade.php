@@ -8,7 +8,10 @@
     </head>
 
     <body>
-        <h1>Posts Table</h1>
+        <span>
+            <h2>{{ __('messages.name') }}</h2>
+            <h2>Diego Macedo</h2>
+        </span>
     </body>
 
 </html>
