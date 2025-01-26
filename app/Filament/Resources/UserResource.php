@@ -7,17 +7,30 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Navigation\NavigationItem;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Inventory Management'; // Organizes resources into a group
+    }
+
+    public static function canViewAny(): bool
+    {
+        return true; // Controls if the resource is visible in the menu
+    }
 
     public static function form(Form $form): Form
     {
@@ -37,12 +50,14 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make("name"),
                 Tables\Columns\TextColumn::make("email"),
                 Tables\Columns\TextColumn::make("password"),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
