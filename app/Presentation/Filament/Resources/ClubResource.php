@@ -19,6 +19,7 @@ class ClubResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
     public static function form(Form $form): Form
     {
         return $form
@@ -26,20 +27,20 @@ class ClubResource extends Resource
                 Forms\Components\TextInput::make("name"),
                 Forms\Components\TextInput::make("foundation_year"),
                 Forms\Components\TextInput::make("country")->columnSpanFull(),
-                Forms\Components\Repeater::make('footballPlayers')
-                    ->relationship('footballPlayers')  // Specify the relationship
-                    ->label('Football Players')
-                    ->grid(3)
-                    ->columnSpan(2)
-                    ->schema([
-                        Forms\Components\Section::make() // Create a card for each football player
-                            ->schema([
-                                Forms\Components\TextInput::make('name')
-                                    ->label('Player Name'), // Display the name of the player in the card
-                                Forms\Components\TextInput::make('position')
-                                    ->label('Position'),
-                            ]), // You can adjust the column span for the card layout
-                    ]),
+                // Forms\Components\Repeater::make('footballPlayers')
+                //     ->relationship('footballPlayers')  // Specify the relationship
+                //     ->label('Football Players')
+                //     ->grid(3)
+                //     ->columnSpan(2)
+                //     ->schema([
+                //         Forms\Components\Section::make() // Create a card for each football player
+                //             ->schema([
+                //                 Forms\Components\TextInput::make('name')
+                //                     ->label('Player Name'), // Display the name of the player in the card
+                //                 Forms\Components\TextInput::make('position')
+                //                     ->label('Position'),
+                //             ]), // You can adjust the column span for the card layout
+                //     ]),
             ]);
     }
 

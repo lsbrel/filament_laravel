@@ -21,7 +21,6 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-
     public static function getNavigationGroup(): ?string
     {
         return 'Inventory Management'; // Organizes resources into a group
@@ -39,6 +38,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make("name"),
                 Forms\Components\TextInput::make("email"),
                 Forms\Components\TextInput::make("password")->password(),
+                Forms\Components\Select::make("role_id")->label("Roles")->relationship("roles", "name")->multiple()->required()
             ]);
     }
 
@@ -49,8 +49,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make("id"),
                 Tables\Columns\TextColumn::make("name")->label(__("messages.name")),
                 Tables\Columns\TextColumn::make("email"),
-                Tables\Columns\TextColumn::make("password"),
-
+                Tables\Columns\TextColumn::make("roles.name")->label("Roles")->badge()
             ])
             ->filters([
                 //
